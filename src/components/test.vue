@@ -6,7 +6,7 @@
      <p v-text="user.firstName"></p>
 
      <ul>
-         <li v-for="item in items"> {{ item.title }} </li>
+         <li v-for="item in items" :key="item"> {{ item.title }} </li>
      </ul>
      <button v-on:click="greet('Queenie')">Hello</button>
      <br/>
@@ -20,41 +20,39 @@
 </template>
 
 <script>
-  export default{
-      name:'test',
-      data(){
-          return{
-              title:"Hello World",
-              user:{
-                  firstName:"Queenie",
-                  lastName:"Kun"
-              },
-              items: [
-                  { title: "item One" },
-                  {title:"item Two"},
-                  {title:"Item Three"}
-              ]
-          }
+export default {
+  name: "test",
+  data() {
+    return {
+      title: "Hello World",
+      user: {
+        firstName: "Queenie",
+        lastName: "Kun"
       },
-      methods:{
-          greet: function(hi) {
-              alert(hi);
-          },
-          pressKey: function(e) {
-              console.log(e.target.value);   
-          },
-          hitEnter: function() {
-              console.log('you hit enter');
-              
-          }
-      },
-      computed:{
-          fullName: function() {
-              return this.user.firstName + ' ' + this.user.lastName
-          }
-      }
-
+      items: [
+        { title: "item One" },
+        { title: "item Two" },
+        { title: "Item Three" }
+      ]
+    };
+  },
+  methods: {
+    greet(hi) {
+      alert(hi)
+    },
+    // pressKey(e) {
+    //   console.log(e.target.value)
+    // },
+    // hitEnter() {
+    //   console.log('you hit enter')
+    // }
+  },
+  computed: {
+    fullName: function() {
+      return this.user.firstName + " " + this.user.lastName;
+    }
   }
+};
 </script>
 
 <style>
